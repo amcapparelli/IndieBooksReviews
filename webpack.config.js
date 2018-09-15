@@ -28,8 +28,17 @@ module.exports = {
             loader: ['html-loader', 'ejs-html-loader'],
         },
         {
-            test: /\.css$/,
-            use: ['style-loader', 'css-loader']
+            test: /\.scss$/,
+            use: ['style-loader', 'css-loader', 'sass-loader']
+        },
+        {
+            test: /\.(jpg|png)$/,
+            use: {
+                loader: 'file-loader',
+                options: {
+                    name: '[path][name].[hash].[ext]'
+                }
+            }
         }
     ]
     }

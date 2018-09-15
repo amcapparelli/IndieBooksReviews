@@ -1,0 +1,19 @@
+@import './normalize.scss';
+@import './settings.scss';
+
+.header-container {
+    display: flex;
+    background-color: $main-color;
+    
+    h1{
+        margin: 0 0 0 150px;
+        padding: 5%;
+        color: white;
+        font-family: $font-titles;
+    }
+    .logo-container img {
+        padding: 5%;
+        margin-top: 0;
+        max-width: 50%; 
+    }
+}
