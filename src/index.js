@@ -1,5 +1,5 @@
 import './styles/main.scss';
-import reviewsIcon from './resources/img/icono-reseñas2.png';
+import reviewsIcon from './resources/img/icono-resenas.png';
 
 const printLogo = () => {
     const headerLogo = document.querySelector('.logo-container')
