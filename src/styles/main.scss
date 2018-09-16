@@ -21,6 +21,15 @@ body p {
     }
 }
 
+.articles-list {
+    max-width: 60%;
+    margin-left: 20%;
+    
+    p {
+        font-size: $font-size-p;
+        line-height: 1.5;
+    }
+}
 footer {
     background-color: $secondary-color;
     padding: 1%;
