@@ -12,16 +12,22 @@ const printLogo = () => {
 printLogo()
 
 const listInfo = () => {
-    let list = document.querySelector('.articles-list')
     connect().then(data => data.map(review => {
-        let paragraph = document.createElement('p')
-        let span = document.createElement('span') 
-        let author = document.createTextNode('autor: ' + review.author)
-        let article = document.createTextNode(review.review)
-        paragraph.appendChild(article)
-        span.appendChild(author)
-        list.appendChild(paragraph)
-        list.appendChild(span)
+        let list = document.querySelector('.articles-list')
+        let reviewExtract = document.createElement('div')
+        reviewExtract.className = 'review-extract'
+        list.appendChild(reviewExtract)
+        for (let key in review) {
+            let value = document.createTextNode(review[key])
+            if (key === 'title') {
+                createNodes(reviewExtract, 'h2', value)
+            } else if (key === 'review') {
+                value = document.createTextNode(review[key].toString().substring(0, 250))
+                createNodes(reviewExtract, 'p', value)
+            } else {
+                createNodes(reviewExtract, 'p', value)
+            }
+        }
     }))
 }
 

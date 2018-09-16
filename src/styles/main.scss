@@ -24,16 +24,21 @@ body p {
 .articles-list {
     max-width: 60%;
     margin-left: 20%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     
     p {
         font-size: $font-size-p;
         line-height: 1.5;
     }
+    span {
+        font-family: $font-paragraph;
+        font-weight: 900;
+    }
 }
 footer {
     background-color: $secondary-color;
     padding: 1%;
-    position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
