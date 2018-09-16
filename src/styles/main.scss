@@ -26,14 +26,18 @@ body p {
     margin-left: 20%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3rem;
     
     p {
         font-size: $font-size-p;
         line-height: 1.5;
     }
-    span {
-        font-family: $font-paragraph;
-        font-weight: 900;
+    h2 {
+        color: $main-color;
+        font-size: $font-size-h2;
+    }
+    img {
+        width: 100%;
     }
 }
 footer {
