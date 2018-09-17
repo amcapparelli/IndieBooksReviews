@@ -1,7 +1,7 @@
-import './styles/main.scss';
-import reviewsIcon from './resources/img/icono-resenas.png';
-import connect from './dataBase/conn'
-import { showResults } from './resources/functions'
+import 'styles/main.scss';
+import reviewsIcon from 'resources/img/icono-resenas.png';
+import connect from './dataBase/conn';
+import { showResults } from 'resources/functions';
 
 const printLogo = () => {
     const headerLogo = document.querySelector('.logo-container')
