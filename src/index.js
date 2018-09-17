@@ -12,8 +12,8 @@ const printLogo = () => {
 printLogo()
 
 const listInfo = () => {
+    let list = document.querySelector('.articles-list')
     connect().then(data => data.map(review => {
-        let list = document.querySelector('.articles-list')
         let reviewExtractContainer = document.createElement('div')
         reviewExtractContainer.className = 'review-extract'
         list.appendChild(reviewExtractContainer)
@@ -22,3 +22,4 @@ const listInfo = () => {
 }
 
 listInfo()
+
