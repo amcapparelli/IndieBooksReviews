@@ -1,7 +1,7 @@
 import './review-styles.scss';
 import connect from 'database/conn';
 import queryString from 'query-string';
-import { printLogo } from 'resources/utils';
+import { printLogo, getFormInputs } from 'resources/utils';
 
 const query = queryString.parse(window.location.search);
 const reviewId = query && query.id;
@@ -24,3 +24,4 @@ const completeReview = (id) => {
         
 }
 completeReview(reviewId)
+getFormInputs()

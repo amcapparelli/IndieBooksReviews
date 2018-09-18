@@ -6,4 +6,17 @@ export const printLogo = () => {
     return headerLogo
 }
 
-export default printLogo
+export const getFormInputs = () => {
+    const button = document.getElementById('btn')
+    const commentArea = document.querySelector('.comment-area')
+    const inputs = document.querySelectorAll('.fields')
+    button.addEventListener('click', (e) => {
+        e.preventDefault()
+        
+    })
+}
+
+export default {
+    printLogo, 
+    getFormInputs
+}
