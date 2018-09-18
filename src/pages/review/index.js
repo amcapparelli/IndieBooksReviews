@@ -1,5 +1,5 @@
 import './review-styles.scss';
-import connect from 'database/conn';
+import ConnectDB from 'database/conn';
 import queryString from 'query-string';
 import { printLogo, getFormInputs } from 'resources/utils';
 
@@ -10,7 +10,8 @@ printLogo()
 
 const completeReview = (id) => {
     let reviewContainer = document.querySelector('.full-article-container')
-    connect().then(data => {
+    let connection = new ConnectDB()
+    connection.get().then(data => {
         let review = data.filter(review => review.id == id)
         reviewContainer.innerHTML = `<h1>${review[0].title}</h1> 
                                     <h2>Autor: ${review[0].author}</h2>
