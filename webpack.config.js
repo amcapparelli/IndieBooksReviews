@@ -1,6 +1,7 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     entry: {
@@ -31,7 +32,8 @@ module.exports = {
             template: 'src/pages/review/index.html',
             chunks: ['review'],
             filename: path.resolve(__dirname, 'dist', 'review', 'index.html')
-        }) 
+        }),
+        new Dotenv() 
     ],
     module: {
         rules: [

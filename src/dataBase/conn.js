@@ -1,6 +1,6 @@
 async function connect () {
     try {
-        const conn = await fetch('http://localhost:8000/reviews')
+        const conn = await fetch(process.env.DB_HOST)
         const data = await conn.json()
         return data
     } catch (error) {

@@ -9,7 +9,15 @@ npm install
 
 ### Connect to dataBase
 
-After installing, please run JSON Server:
+After installing, please change the **.env.example** file to a **.env** file with your
+environment variables.
+
+Example: 
+```
+DB_HOST='http://localhost:8000/reviews'
+```
+
+Then run JSON Server:
 
 ```
 npm run db
