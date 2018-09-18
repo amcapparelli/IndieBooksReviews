@@ -59,7 +59,8 @@ module.exports = {
     resolve: {
         alias: {
           styles: path.resolve(__dirname, 'src', 'styles'),
-          resources: path.resolve(__dirname, 'src', 'resources')
+          resources: path.resolve(__dirname, 'src', 'resources'),
+          database: path.resolve(__dirname, 'src', 'dataBase')
         }
       },
 };

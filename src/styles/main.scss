@@ -11,13 +11,17 @@ body p {
     h1{
         margin: 0 0 0 150px;
         padding: 5%;
-        color: white;
+        color: $white;
         font-family: $font-titles;
     }
     .logo-container img {
         
-        margin-top: 0;
+        margin-top: 5%;
         max-width: 50%; 
+    }
+
+    a {
+        text-decoration: none;
     }
 }
 
@@ -27,6 +31,7 @@ body p {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 3rem;
+    background-color: $white;
     
     p {
         font-size: $font-size-p;
@@ -40,6 +45,7 @@ body p {
         width: 100%;
     }
 }
+
 footer {
     background-color: $secondary-color;
     padding: 1%;

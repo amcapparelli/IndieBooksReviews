@@ -1,13 +1,8 @@
 import 'styles/main.scss';
 import reviewsIcon from 'resources/img/icono-resenas.png';
-import connect from './dataBase/conn';
+import connect from 'database/conn';
+import { printLogo } from 'resources/utils';
 import { showResults } from 'resources/functions';
-
-const printLogo = () => {
-    const headerLogo = document.querySelector('.logo-container')
-    headerLogo.innerHTML = `<img src="${reviewsIcon}" alt="logo reseñas literarias"> `
-    return headerLogo
-}
 
 printLogo()
 
