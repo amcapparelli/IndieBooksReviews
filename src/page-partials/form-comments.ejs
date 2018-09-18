@@ -1,9 +1,9 @@
 <form action="">
     <label for="name">Nombre</label>
-    <input type="text" name="name" class="fields">
+    <input type="text" name="name" class="fields" required>
     <label for="email">Email</label>
-    <input type="email" name="email" class="fields">
+    <input type="email" name="email" class="fields" required>
     <label for="message">Comentario</label>
-    <textarea name="message" class="fields"></textarea>
+    <textarea name="message" class="fields" maxlength="500" required ></textarea>
     <button type="submit" id="btn">Enviar</button>
 </form>
