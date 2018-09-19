@@ -26,20 +26,30 @@ body p {
 }
 
 .articles-list {
+    margin-top: 5%;
     max-width: 60%;
     margin-left: 20%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 3rem;
-    background-color: $white;
+
+    .review-extract {
+        background-color: $white;
+    }
     
     p {
         font-size: $font-size-p;
         line-height: 1.5;
+        text-align: center;
+    }
+
+    span {
+        @extend p;
     }
     h2 {
         color: $main-color;
         font-size: $font-size-h2;
+        text-align: center;
     }
     img {
         width: 100%;
@@ -49,6 +59,15 @@ body p {
         display: block;
         margin-left: auto;
         margin-right: auto;
+    }
+    #readmore-link  {
+        text-align: left;
+       
+        a {
+            text-decoration: none;
+            color: $main-color;
+            background-color: $platinum;
+        }
     }
 }
 

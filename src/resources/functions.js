@@ -10,12 +10,12 @@ export function createNodes (container, parent, textNode, id) {
         } else {
             parentElement.src = avatar
             parentElement.classList.add ('avatar')
-            console.log (avatar)
         }
     } else if ( parent === 'img' ) {
         parentElement.src = textNode
     } else if ( parent === 'article') {
         let leeMas = document.createElement('p')
+        leeMas.id = 'readmore-link'
         leeMas.innerHTML = `<a href="./review?id=${id}" > Leer artículo completo </a>`
         let extracto = document.createElement('span')
         extracto.innerHTML = textNode

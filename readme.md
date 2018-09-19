@@ -14,7 +14,7 @@ environment variables.
 
 Example: 
 ```
-DB_HOST='http://localhost:8000/reviews'
+DB_HOST='http://localhost:8000'
 ```
 
 Then run JSON Server:

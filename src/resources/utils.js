@@ -1,6 +1,19 @@
 import reviewsIcon from 'resources/img/icono-resenas.png'
 import ConnectDB from 'database/conn';
 
+
+const checkForm = (form, inputs) => {
+    let formData = {}
+    form.reportValidity()
+    if (form.checkValidity()) {
+        let connection = new ConnectDB()
+        inputs.forEach(input => {
+            formData[input.name] = input.value
+            connection.post(formData)
+        })
+    }
+}
+
 export const printLogo = () => {
     const headerLogo = document.querySelector('.logo-container')
     headerLogo.innerHTML = `<img src="${reviewsIcon}" alt="logo reseñas literarias"> `
@@ -8,17 +21,12 @@ export const printLogo = () => {
 }
 
 export const getFormInputs = () => {
+    const form = document.querySelector('.form-comments')
     const button = document.getElementById('btn')
-    const commentArea = document.querySelector('.comment-area')
     const inputs = document.querySelectorAll('.fields')
-    let connection = new ConnectDB()
     button.addEventListener('click', (e) => {
         e.preventDefault()
-        const formData = {}
-        inputs.forEach(input  => {
-            formData[input.name] = input.value
-            connection.post(formData)
-        })
+        checkForm(form, inputs)
     })
 }
 
