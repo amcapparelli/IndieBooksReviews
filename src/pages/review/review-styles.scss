@@ -17,6 +17,14 @@
     h1, h2 {
         color: $main-color;
     }
+
+    #like {
+        background-color: $platinum-gray;
+        border: none;
+        color: $main-color;
+        font-size: $font-size-h1;
+
+    }
 }
 
 form {
