@@ -1,14 +1,26 @@
+import  avatar  from 'resources/img/avatar.png'
+
 export function createNodes (container, parent, textNode, id) {
     let parentElement = document.createElement(parent)
     container.appendChild(parentElement)
-    if ( parent === 'img' ) {
+    if ( parent === 'img' && id !== undefined ) {
+        if (textNode !== '') {
+            parentElement.src = textNode
+            parentElement.classList.add ('avatar')
+        } else {
+            parentElement.src = avatar
+            parentElement.classList.add ('avatar')
+            console.log (avatar)
+        }
+    } else if ( parent === 'img' ) {
         parentElement.src = textNode
     } else if ( parent === 'article') {
-        let p = document.createElement('p')
-        p.innerHTML = `<a href="./review?id=${id}" > Leer artículo Completo </a>`
-        parentElement.appendChild(p)
-        let parentContainer = parentElement.parentNode
-        parentContainer.insertBefore(textNode, parentElement)
+        let leeMas = document.createElement('p')
+        leeMas.innerHTML = `<a href="./review?id=${id}" > Leer artículo completo </a>`
+        let extracto = document.createElement('span')
+        extracto.innerHTML = textNode
+        parentElement.appendChild(leeMas, extracto)
+        parentElement.insertBefore(extracto, leeMas)
     }
     else {
         parentElement.appendChild(textNode)
@@ -22,7 +34,7 @@ export function showResults (data, parentDiv) {
         if (key === 'title') {
             createNodes(parentDiv, 'h2', value)
         } else if (key === 'review') {
-            value = document.createTextNode(data[key].toString().substring(0, 250)+'...')
+            value = data[key].toString().substring(0, 250)+'...'
             createNodes(parentDiv, 'article', value, id)
         } else if (key === 'cover' ){
             value = data[key]
@@ -30,8 +42,17 @@ export function showResults (data, parentDiv) {
         } else if (key === 'date') {
             value = document.createTextNode(calculateDate(data[key]))
             createNodes(parentDiv, 'p', value)
-        }
-        else if (key === 'author' || key === 'reviewer' ) {
+        } else if (key === 'avatar' && key !== 'undefined') {
+            value = data[key]
+            createNodes(parentDiv, 'img', value, id)
+        } else if (key === 'avatar') {
+            value = data[key]
+            createNodes(parentDiv, 'img', value, id)
+        } else if (key === 'author') {
+            value = document.createTextNode('Autor del libro: ' + data[key])
+            createNodes(parentDiv, 'p', value)
+        } else if (key === 'reviewer' ) {
+            value = document.createTextNode('Autor de la reseña: ' + data[key])
             createNodes(parentDiv, 'p', value)
         }
     }
@@ -47,9 +68,13 @@ function calculateDate(dateReviewPublished) {
     const datePublishedYY = datePublished.getFullYear() 
     const diff = (currentTime - datePublished)
     const diffMins = Math.round(diff/60000)
-    if (diffMins < 1440) {
+    const diffHours = Math.round(diff/3600000)
+    if (diffMins < 60 ) {
         valueDate = 'publicado hace '+ diffMins+ ' minutos'
-    } else {
+    } else if (diffMins > 60 && diffMins < 1440 ){
+        valueDate = 'publicado hace '+ diffHours+ ' horas'
+    }
+    else {
         valueDate = 'publicado el '+ datePublishedDD+ '/'+ datePublishedMM+ '/'+datePublishedYY
     }
     return valueDate
