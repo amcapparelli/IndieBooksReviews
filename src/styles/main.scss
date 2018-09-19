@@ -61,12 +61,12 @@ body p {
         margin-right: auto;
     }
     #readmore-link  {
-        text-align: left;
+        text-align: right;
        
         a {
             text-decoration: none;
             color: $main-color;
-            background-color: $platinum;
+            background-color: $platinum;   
         }
     }
 }

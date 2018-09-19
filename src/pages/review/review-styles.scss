@@ -19,11 +19,14 @@
     }
 
     #like {
+        border: 0;
         background-color: $platinum-gray;
         border: none;
         color: $main-color;
         font-size: $font-size-h1;
-
+    }
+    img {
+        max-width: 30%;
     }
 }
 

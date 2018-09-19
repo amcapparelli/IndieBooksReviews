@@ -16,7 +16,7 @@ export function createNodes (container, parent, textNode, id) {
     } else if ( parent === 'article') {
         let leeMas = document.createElement('p')
         leeMas.id = 'readmore-link'
-        leeMas.innerHTML = `<a href="./review?id=${id}" > Leer artículo completo </a>`
+        leeMas.innerHTML = `<a href="./review?id=${id}" > Leer artículo completo --> </a>`
         let extracto = document.createElement('span')
         extracto.innerHTML = textNode
         parentElement.appendChild(leeMas, extracto)
