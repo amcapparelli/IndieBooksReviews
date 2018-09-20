@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --mode=development",
     "build": "webpack --config webpack.config.js --mode=production",
-    "db": "json-server --watch --port=8000 ./src/dataBase/db.json"
+    "db": "json-server --watch --port=8000 ./src/dataBase/db.json "
   },
   "repository": {
     "type": "git",

@@ -4,7 +4,7 @@ class ConnectDB {
     }
     async get () {
         try {
-            const conn = await fetch(this.API +'/'+'reviews')
+            const conn = await fetch(this.API+'reviews')
             const data = await conn.json()
             return data
         } catch (error) {
@@ -12,9 +12,9 @@ class ConnectDB {
         }
     }
 
-    async post (body) {
+    async post (body ,id) {
         try {
-            await fetch(this.API+'/'+'comments' , {
+            await fetch(this.API+'comments', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json'

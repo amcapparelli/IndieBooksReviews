@@ -2,15 +2,16 @@ import reviewsIcon from 'resources/img/icono-resenas.png'
 import ConnectDB from 'database/conn';
 
 
-const checkForm = (form, inputs) => {
-    let formData = {}
+const checkForm = (form, inputs, id) => {
+    let formData = { }
     form.reportValidity()
     if (form.checkValidity()) {
         let connection = new ConnectDB()
         inputs.forEach(input => {
             formData[input.name] = input.value
-            connection.post(formData)
         })
+        formData["post_id"] = parseInt(id)
+        connection.post(formData, id)
     }
 }
 
@@ -20,13 +21,13 @@ export const printLogo = () => {
     return headerLogo
 }
 
-export const getFormInputs = () => {
+export const getFormInputs = (id) => {
     const form = document.querySelector('.form-comments')
     const button = document.getElementById('btn')
     const inputs = document.querySelectorAll('.fields')
     button.addEventListener('click', (e) => {
         e.preventDefault()
-        checkForm(form, inputs)
+        checkForm(form, inputs, id)
     })
 }
 

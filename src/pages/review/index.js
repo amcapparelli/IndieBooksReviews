@@ -43,6 +43,8 @@ const completeReview = (id) => {
     })
 }
 
+
+
 completeReview(reviewId)
-getFormInputs()
+getFormInputs(reviewId)
 
