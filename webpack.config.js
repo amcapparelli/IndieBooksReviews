@@ -60,7 +60,8 @@ module.exports = {
         alias: {
           styles: path.resolve(__dirname, 'src', 'styles'),
           resources: path.resolve(__dirname, 'src', 'resources'),
-          database: path.resolve(__dirname, 'src', 'dataBase')
+          database: path.resolve(__dirname, 'src', 'dataBase'),
+          pages: path.resolve(__dirname, 'src', 'pages')
         }
       },
 };

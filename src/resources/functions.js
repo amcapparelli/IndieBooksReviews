@@ -1,4 +1,5 @@
-import  avatar  from 'resources/img/avatar.png'
+import ConnectDB from 'database/conn';
+import  avatar  from 'resources/img/avatar.png';
 
 export function createNodes (container, parent, textNode, id) {
     let parentElement = document.createElement(parent)
@@ -16,7 +17,8 @@ export function createNodes (container, parent, textNode, id) {
     } else if ( parent === 'article') {
         let leeMas = document.createElement('p')
         leeMas.id = 'readmore-link'
-        leeMas.innerHTML = `<a href="./review?id=${id}" > Leer artículo completo --> </a>`
+        leeMas.innerHTML = `<a href="./review?id=${id}" > Leer artículo completo --> </a> <br>
+                            <a href="./review?id=${id}#comment-area" > Leer comentarios --> </a>`
         let extracto = document.createElement('span')
         extracto.innerHTML = textNode
         parentElement.appendChild(leeMas, extracto)
@@ -58,7 +60,7 @@ export function showResults (data, parentDiv) {
     }
 }
 
-function calculateDate(dateReviewPublished) {
+export function calculateDate(dateReviewPublished) {
     let valueDate = ''
     const date = new Date()
     const currentTime = date.getTime()
@@ -80,7 +82,37 @@ function calculateDate(dateReviewPublished) {
     return valueDate
 }
 
+export const showComments = (comments) => {
+    let commentsAreaContanier = document.querySelector('.comment-area')
+    if (comments.length !== 0) {
+    comments.forEach(comment  => {
+        let commentContainer = document.createElement('div')
+        commentContainer.classList.add('comment-container')
+        commentsAreaContanier.appendChild(commentContainer)
+        let name = document.createElement('span')
+        let message = document.createElement('p')
+        name.innerHTML = comment.name
+        message.innerHTML = comment.message
+        commentContainer.appendChild(message, name)
+        commentContainer.insertBefore( name, message)
+    })
+    } else {
+        commentsAreaContanier.innerHTML = ` <p>Aún no hay comentarios. Sé el primero en comentar </p> `
+    }   
+}
+
+export const getComments = (id) => {
+    let connection = new ConnectDB()
+    connection.get('comments').then(data => {
+        let comments = data.filter(comment => comment.post_id == id)
+        showComments(comments)
+    }) 
+}
+
 export default {
     createNodes,
-    showResults
+    showResults,
+    calculateDate,
+    getComments,
+    showComments
 }

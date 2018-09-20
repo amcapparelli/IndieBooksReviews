@@ -11,7 +11,7 @@ const checkForm = (form, inputs, id) => {
             formData[input.name] = input.value
         })
         formData["post_id"] = parseInt(id)
-        connection.post(formData, id)
+        connection.post(formData, 'comments')
     }
 }
 

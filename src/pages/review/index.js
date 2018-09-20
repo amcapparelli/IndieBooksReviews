@@ -2,6 +2,7 @@ import './review-styles.scss';
 import ConnectDB from 'database/conn';
 import queryString from 'query-string';
 import { printLogo, getFormInputs } from 'resources/utils';
+import { calculateDate, getComments } from 'resources/functions'
 
 const query = queryString.parse(window.location.search);
 const reviewId = query && query.id;
@@ -25,25 +26,24 @@ const likeReview = (id) => {
     })
 }
 
+
 const completeReview = (id) => {
     let reviewContainer = document.querySelector('.full-article-container')
     let connection = new ConnectDB()
-    connection.get().then(data => {
+    connection.get('reviews').then(data => {
         let review = data.filter(review => review.id == id)
         reviewContainer.innerHTML = `<h1>${review[0].title}</h1>
                                     <h2>Autor: ${review[0].author}</h2>
                                     <h2>Autor de la reseña: ${review[0].reviewer}</h2>
-                                    <p>fecha de publicación: ${review[0].date}</p>
+                                    <p>fecha de publicación: ${calculateDate(review[0].date)} </p>
                                     <button class="like" > <i class="far fa-star"></i> </button>
                                     <figure>
                                         <img src="${review[0].cover}" alt="portada de ${review[0].title}">
                                     </figure>
                                     <article>${review[0].review}</article>  `
        likeReview(reviewId)
-    })
+    }).then(getComments(id))
 }
-
-
 
 completeReview(reviewId)
 getFormInputs(reviewId)

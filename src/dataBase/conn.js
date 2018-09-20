@@ -2,9 +2,9 @@ class ConnectDB {
     constructor() {
         this.API = process.env.DB_HOST
     }
-    async get () {
+    async get (collection) {
         try {
-            const conn = await fetch(this.API+'reviews')
+            const conn = await fetch(this.API+collection)
             const data = await conn.json()
             return data
         } catch (error) {
@@ -12,9 +12,9 @@ class ConnectDB {
         }
     }
 
-    async post (body ,id) {
+    async post (body, collection) {
         try {
-            await fetch(this.API+'comments', {
+            await fetch(this.API+collection, {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json'

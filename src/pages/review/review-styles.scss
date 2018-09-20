@@ -1,9 +1,8 @@
 @import 'styles/main.scss';
+@import 'pages/review/comments-styles.scss';
 
 .full-article-container {
-    max-width: 60%;
-    margin-left: 20%;
-    text-align: center;
+    @extend .comment-area;
     background-color: $white;
 
     article {
@@ -12,6 +11,8 @@
         max-width: 70%;
         margin-left: 15%;
         padding: 1%;
+        line-height: 1.5;
+        text-align: justify;
     }
 
     h1, h2 {
@@ -31,6 +32,7 @@
 }
 
 form {
+    @extend .comment-area;
     margin: 5% 0 0 30%;
     text-align: center;
     max-width: 40%;
@@ -41,7 +43,6 @@ form {
         display: block;
         width: 100%;
         border: 0px solid;
-        
     }
 
     input, textarea {
