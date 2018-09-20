@@ -5,8 +5,8 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     entry: {
-        home: path.join(__dirname, 'src', 'index'),
-        review: path.join(__dirname, 'src', 'pages', 'review', 'index')
+        home: ["@babel/polyfill", path.join(__dirname, 'src', 'index')],
+        review: ["@babel/polyfill", path.join(__dirname, 'src', 'pages', 'review', 'index')]
     }, 
     output: {
         filename: '[name][hash].js',
@@ -36,7 +36,12 @@ module.exports = {
         new Dotenv() 
     ],
     module: {
-        rules: [
+        rules: [ 
+        {
+            test: /\.(js)$/,
+            exclude: /node_modules/,
+            use: "babel-loader"
+        },
         {
             test: /\.(html|ejs)$/,
             loader: ['html-loader', 'ejs-html-loader'],
