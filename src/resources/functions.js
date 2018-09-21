@@ -1,5 +1,6 @@
 import ConnectDB from 'database/conn';
 import  avatar  from 'resources/img/avatar.png';
+import YouTubePlayer from 'youtube-player';
 
 export function createNodes (container, parent, textNode, id) {
     let parentElement = document.createElement(parent)
@@ -14,6 +15,18 @@ export function createNodes (container, parent, textNode, id) {
         }
     } else if ( parent === 'img' ) {
         parentElement.src = textNode
+    } else if ( parent === 'div' ){
+        parentElement.id = 'ytplayer'
+        var offsetWidth =parentElement.offsetWidth
+        let player;
+        player = YouTubePlayer('ytplayer', {
+            width: offsetWidth,
+            heigh: (offsetWidth/1.777)
+        });
+        var vid = textNode
+        player.loadVideoById(vid)
+        player.stopVideo()
+        
     } else if ( parent === 'article') {
         let leeMas = document.createElement('p')
         leeMas.id = 'readmore-link'
@@ -38,15 +51,15 @@ export function showResults (data, parentDiv) {
         } else if (key === 'review') {
             value = data[key].toString().substring(0, 250)+'...'
             createNodes(parentDiv, 'article', value, id)
-        } else if (key === 'cover' ){
+        } else if (key === 'video' ) {
+            value = data[key].substring((data[key].length -11))
+            createNodes(parentDiv, 'div', value)
+        } else if ( key === 'cover' && data.video === undefined ){
             value = data[key]
             createNodes(parentDiv, 'img', value)
         } else if (key === 'date') {
             value = document.createTextNode(calculateDate(data[key]))
             createNodes(parentDiv, 'p', value)
-        } else if (key === 'avatar' && key !== 'undefined') {
-            value = data[key]
-            createNodes(parentDiv, 'img', value, id)
         } else if (key === 'avatar') {
             value = data[key]
             createNodes(parentDiv, 'img', value, id)
