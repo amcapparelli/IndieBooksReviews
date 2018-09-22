@@ -40,10 +40,10 @@ export const showMobileMenu = () => {
     })
 }
 
-export const YoutubePlayerFunc = (parentElement, video) => {
+export const YoutubePlayerFunc = (parentElement, divContainer, video) => {
     var offsetWidth =parentElement.offsetWidth
     let player;
-        player = YouTubePlayer('ytplayer', {
+        player = YouTubePlayer(divContainer, {
             width: offsetWidth,
             heigh: (offsetWidth/1.777)
         });

@@ -16,8 +16,8 @@ export function createNodes (container, parent, textNode, id) {
     } else if ( parent === 'img' ) {
         parentElement.src = textNode
     } else if ( parent === 'div' ){
-        parentElement.id = 'ytplayer'
-        YoutubePlayerFunc(parentElement, textNode)
+        parentElement.id = 'ytplayer'+id
+        YoutubePlayerFunc(parentElement, parentElement.id, textNode)
     } else if ( parent === 'article') {
         let leeMas = document.createElement('p')
         leeMas.id = 'readmore-link'
@@ -44,7 +44,7 @@ export function showResults (data, parentDiv) {
             createNodes(parentDiv, 'article', value, id)
         } else if (key === 'video' ) {
             value = data[key].substring((data[key].length -11))
-            createNodes(parentDiv, 'div', value)
+            createNodes(parentDiv, 'div', value, id)
         } else if ( key === 'cover' && data.video === undefined ){
             value = data[key]
             createNodes(parentDiv, 'img', value)
