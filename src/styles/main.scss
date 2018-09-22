@@ -5,8 +5,9 @@ body p {
     font-family: $font-paragraph;
 }
 .header-container {
-    display: flex;
+    display: grid;
     background-color: $main-color;
+    grid-template-columns: 0.3fr 0.5fr 1fr;
     
     h1{
         margin: 0 0 0 150px;
@@ -16,12 +17,39 @@ body p {
     }
     .logo-container img {
         
-        margin-top: 5%;
-        max-width: 50%; 
+        margin-top: 1%;
+        max-width: 40%; 
     }
 
     a {
         text-decoration: none;
+    }
+
+    p {
+        color: $white;
+    }
+}
+
+.menu-mobile {
+    display: none;
+}
+
+.wrapper-nav {
+    display: grid;
+    grid-template-columns: auto auto 0.5fr 0.5fr;
+    align-items: end;
+    grid-gap: 20px;
+    float: right;
+
+    input {
+        width: 80%;
+        
+    }
+
+    label {
+        font-family: $font-titles;
+        color: $white;
+        
     }
 }
 
@@ -78,4 +106,6 @@ footer {
     bottom: 0;
     left: 0;
     text-align: right;
+    position: -webkit- sticky;
+    position: sticky;
 }
