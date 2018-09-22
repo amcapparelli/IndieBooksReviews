@@ -2,8 +2,9 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+var merge = require('webpack-merge');
 
-module.exports = {
+var commonConfig = {
     entry: {
         home: ["@babel/polyfill", path.join(__dirname, 'src', 'index')],
         review: ["@babel/polyfill", path.join(__dirname, 'src', 'pages', 'review', 'index')]
@@ -12,13 +13,9 @@ module.exports = {
         filename: '[name][hash].js',
         path: path.resolve(__dirname, 'dist')
     },
-    devServer: {
-        open: true, 
-        overlay: true, 
-        port: 3000 
-    },
+    
     plugins: [
-        new CleanWebpackPlugin(['dist']),
+        
         new HtmlWebpackPlugin(
             {
             title: 'Indie Books Reviews',
@@ -70,3 +67,22 @@ module.exports = {
         }
       },
 };
+
+var devConfig = {
+    devServer: {
+        open: true, 
+        overlay: true, 
+        port: 3000 
+    },
+}
+
+var prodConfig = {
+    plugins: [
+        new CleanWebpackPlugin(['dist'])
+    ]
+}
+
+module.exports = (env, argv) =>
+  argv.mode === 'development' ?
+    merge(commonConfig, devConfig) :
+    merge(commonConfig, prodConfig);
