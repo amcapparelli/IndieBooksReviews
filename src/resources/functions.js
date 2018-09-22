@@ -1,6 +1,6 @@
 import ConnectDB from 'database/conn';
 import  avatar  from 'resources/img/avatar.png';
-import YouTubePlayer from 'youtube-player';
+import { YoutubePlayerFunc } from 'resources/utils';
 
 export function createNodes (container, parent, textNode, id) {
     let parentElement = document.createElement(parent)
@@ -17,16 +17,7 @@ export function createNodes (container, parent, textNode, id) {
         parentElement.src = textNode
     } else if ( parent === 'div' ){
         parentElement.id = 'ytplayer'
-        var offsetWidth =parentElement.offsetWidth
-        let player;
-        player = YouTubePlayer('ytplayer', {
-            width: offsetWidth,
-            heigh: (offsetWidth/1.777)
-        });
-        var vid = textNode
-        player.loadVideoById(vid)
-        player.stopVideo()
-        
+        YoutubePlayerFunc(parentElement, textNode)
     } else if ( parent === 'article') {
         let leeMas = document.createElement('p')
         leeMas.id = 'readmore-link'
@@ -105,7 +96,7 @@ export const showComments = (comments) => {
         commentsAreaContanier.appendChild(commentContainer)
         let name = document.createElement('span')
         let message = document.createElement('p')
-        name.innerHTML = comment.name
+        name.innerHTML = comment.name+' comentó: '
         message.innerHTML = comment.message
         commentContainer.appendChild(message, name)
         commentContainer.insertBefore( name, message)
@@ -116,11 +107,16 @@ export const showComments = (comments) => {
 }
 
 export const getComments = (id) => {
-    let connection = new ConnectDB()
-    connection.get('comments').then(data => {
+    try {
+        let connection = new ConnectDB()
+        connection.get('comments').then(data => {
         let comments = data.filter(comment => comment.post_id == id)
         showComments(comments)
     }) 
+    } catch (error) {
+        console.log('Hubo un error al cargar los comentarios', error)
+    }   
+    
 }
 
 export default {

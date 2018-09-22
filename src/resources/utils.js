@@ -1,5 +1,6 @@
 import reviewsIcon from 'resources/img/icono-resenas.png'
 import ConnectDB from 'database/conn';
+import YouTubePlayer from 'youtube-player';
 
 
 const checkForm = (form, inputs, id) => {
@@ -39,8 +40,21 @@ export const showMobileMenu = () => {
     })
 }
 
+export const YoutubePlayerFunc = (parentElement, video) => {
+    var offsetWidth =parentElement.offsetWidth
+    let player;
+        player = YouTubePlayer('ytplayer', {
+            width: offsetWidth,
+            heigh: (offsetWidth/1.777)
+        });
+        var vid = video
+        player.loadVideoById(vid)
+        player.stopVideo()
+}
+
 export default {
     printLogo, 
     getFormInputs,
-    showMobileMenu
+    showMobileMenu,
+    YoutubePlayerFunc
 }

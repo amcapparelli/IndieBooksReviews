@@ -1,5 +1,4 @@
 import 'styles/main.scss';
-import reviewsIcon from 'resources/img/icono-resenas.png';
 import  ConnectDB  from 'database/conn';
 import { printLogo, showMobileMenu } from 'resources/utils';
 import { showResults } from 'resources/functions';

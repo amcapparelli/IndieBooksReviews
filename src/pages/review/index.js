@@ -1,7 +1,7 @@
 import './review-styles.scss';
 import ConnectDB from 'database/conn';
 import queryString from 'query-string';
-import { printLogo, getFormInputs } from 'resources/utils';
+import { printLogo, getFormInputs, YoutubePlayerFunc } from 'resources/utils';
 import { calculateDate, getComments } from 'resources/functions'
 
 const query = queryString.parse(window.location.search);
@@ -40,11 +40,14 @@ const completeReview = (id) => {
                                     <figure>
                                         <img src="${review[0].cover}" alt="portada de ${review[0].title}">
                                     </figure>
+                                    <div id="ytplayer"> </div>
                                     <article>${review[0].review}</article>  `
-       likeReview(reviewId)
+    likeReview(reviewId)
+    YoutubePlayerFunc(reviewContainer, review[0].video.substring((review[0].video.length -11)))
     }).then(getComments(id))
 }
 
 completeReview(reviewId)
 getFormInputs(reviewId)
+
 
