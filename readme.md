@@ -17,13 +17,11 @@ Example:
 DB_HOST='http://localhost:8000/'
 ```
 
-Then run JSON Server:
+Then change the **db.example.json** file to **db.json**. You can leave the data or add your own data. Then run JSON Server:
 
 ```
 npm run db
 ```
-
-Then, change the **db.example.json** file to **db.json** with your data
 
 ### Run Mode Development:
 
