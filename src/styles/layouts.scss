@@ -1,0 +1,26 @@
+@import './settings.scss';
+
+@mixin for-mobile {
+    @media only screen and (max-width: #{$tablet-portrait}) {
+      @content;
+    }
+  }
+  
+  @mixin for-tablet-portrait {
+    @media only screen and (max-width: #{$tablet-landscape}) {
+      @content;
+    }
+  }
+  
+  @mixin for-tablet-landscape {
+    @media only screen and (min-width: #{$tablet-landscape}) {
+      @content;
+    }
+  }
+  
+  @mixin for-desktop {
+    @media only screen and (min-width: #{$desktop}) {
+      @content;
+    }
+  }
+  

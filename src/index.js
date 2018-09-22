@@ -1,8 +1,8 @@
 import 'styles/main.scss';
 import reviewsIcon from 'resources/img/icono-resenas.png';
 import  ConnectDB  from 'database/conn';
-import { printLogo } from 'resources/utils';
-import { showResults, getComments } from 'resources/functions';
+import { printLogo, showMobileMenu } from 'resources/utils';
+import { showResults } from 'resources/functions';
 
 printLogo()
 
@@ -18,4 +18,5 @@ const listInfo = () => {
 }
 
 listInfo()
+showMobileMenu()
 

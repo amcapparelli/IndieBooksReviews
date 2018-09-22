@@ -31,7 +31,16 @@ export const getFormInputs = (id) => {
     })
 }
 
+export const showMobileMenu = () => {
+    let btn = document.getElementById('btn-MenuMobile')
+    let mobileMenu = document.querySelector('.wrapper-nav-mobile')
+    btn.addEventListener('click',  () => {
+        mobileMenu.classList.toggle('hidden')
+    })
+}
+
 export default {
     printLogo, 
-    getFormInputs
+    getFormInputs,
+    showMobileMenu
 }

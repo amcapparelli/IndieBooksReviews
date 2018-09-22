@@ -1,16 +1,18 @@
 @import './normalize.scss';
 @import './settings.scss';
+@import './layouts.scss';
 
 body p {
     font-family: $font-paragraph;
 }
+
 .header-container {
     display: grid;
     background-color: $main-color;
     grid-template-columns: 0.3fr 0.5fr 1fr;
     
     h1{
-        margin: 0 0 0 150px;
+        margin: 0 0 0 20%;
         padding: 5%;
         color: $white;
         font-family: $font-titles;
@@ -18,7 +20,7 @@ body p {
     .logo-container img {
         
         margin-top: 1%;
-        max-width: 40%; 
+        width: 40%; 
     }
 
     a {
@@ -31,10 +33,32 @@ body p {
 }
 
 .menu-mobile {
+    @include for-mobile {
+        display: inline;
+        
+    }
     display: none;
+
+    #btn-MenuMobile {
+        border: 0;
+        background-color: $main-color;
+        color: $white;
+        float: right;
+        padding: 10% 40% 0 0;
+    }
 }
 
 .wrapper-nav {
+  
+    @include for-tablet-portrait {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 0.2fr;
+    }
+
+    @include for-mobile {
+        display: none;
+    }
+
     display: grid;
     grid-template-columns: auto auto 0.5fr 0.5fr;
     align-items: end;
@@ -43,17 +67,50 @@ body p {
 
     input {
         width: 80%;
-        
+        @include for-tablet-portrait {
+            width: 100%;
+        }
     }
 
     label {
         font-family: $font-titles;
         color: $white;
         
+    }   
+}
+
+.wrapper-nav-mobile.hidden {
+    display: none;
+}
+
+.wrapper-nav-mobile {
+   
+    top:0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    background-color: $platinum-gray;
+    align-items: end;
+
+    .search-container {
+        padding-top: 5%;
     }
+
+    input, label {
+        max-width: 20%;
+    }
+
 }
 
 .articles-list {
+    @include for-tablet-portrait {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    @include for-mobile {
+        display: grid;
+        grid-template-columns: 1fr;
+    } 
+
     margin-top: 5%;
     max-width: 60%;
     margin-left: 20%;
