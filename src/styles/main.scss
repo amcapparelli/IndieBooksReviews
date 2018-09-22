@@ -10,6 +10,10 @@ body p {
     display: grid;
     background-color: $main-color;
     grid-template-columns: 0.3fr 0.5fr 1fr;
+    @include for-mobile {
+        display: grid;
+        grid-template-columns: 0.5fr 3fr 1fr;
+    }
     
     h1{
         margin: 0 0 0 20%;
@@ -18,9 +22,15 @@ body p {
         font-family: $font-titles;
     }
     .logo-container img {
-        
         margin-top: 1%;
         width: 40%; 
+        @include for-tablet-portrait {
+            width: 90%;
+        }
+        @include for-mobile {
+            margin-top: 10%;
+            width: 50%;
+        }   
     }
 
     a {
@@ -35,7 +45,6 @@ body p {
 .menu-mobile {
     @include for-mobile {
         display: inline;
-        
     }
     display: none;
 
@@ -43,8 +52,7 @@ body p {
         border: 0;
         background-color: $main-color;
         color: $white;
-        float: right;
-        padding: 10% 40% 0 0;
+        margin: 50% 50% 0 0;
     }
 }
 
@@ -60,7 +68,8 @@ body p {
     }
 
     display: grid;
-    grid-template-columns: auto auto 0.5fr 0.5fr;
+    grid-template-columns: auto auto auto 0.5fr;
+    padding-top: 5%;
     align-items: end;
     grid-gap: 20px;
     float: right;
@@ -91,14 +100,10 @@ body p {
     background-color: $platinum-gray;
     align-items: end;
 
-    .search-container {
-        padding-top: 5%;
+    .login-container, .search-container, .list-container {
+        padding-left: 20%;
+        padding-top: 5%;   
     }
-
-    input, label {
-        max-width: 20%;
-    }
-
 }
 
 .articles-list {

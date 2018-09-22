@@ -93,6 +93,7 @@ export function calculateDate(dateReviewPublished) {
         valueDate = 'publicado el '+ datePublishedDD+ '/'+ datePublishedMM+ '/'+datePublishedYY
     }
     return valueDate
+    
 }
 
 export const showComments = (comments) => {
