@@ -1,13 +1,13 @@
-const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+var path = require('path');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var Dotenv = require('dotenv-webpack');
 var merge = require('webpack-merge');
 
 var commonConfig = {
     entry: {
-        home: ["@babel/polyfill", path.join(__dirname, 'src', 'index')],
-        review: ["@babel/polyfill", path.join(__dirname, 'src', 'pages', 'review', 'index')]
+        home: ["@babel/polyfill", 'whatwg-fetch', path.join(__dirname, 'src', 'index')],
+        review: ["@babel/polyfill", 'whatwg-fetch', path.join(__dirname, 'src', 'pages', 'review', 'index')]
     }, 
     output: {
         filename: '[name][hash].js',

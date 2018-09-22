@@ -43,7 +43,10 @@ const completeReview = (id) => {
                                     <div id="ytplayer"> </div>
                                     <article>${review[0].review}</article>  `
     likeReview(reviewId)
-    YoutubePlayerFunc(reviewContainer, 'ytplayer', review[0].video.substring((review[0].video.length -11)))
+    if (review[0].video) {
+        YoutubePlayerFunc(reviewContainer, 'ytplayer', review[0].video.substring((review[0].video.length -11)))
+    }
+    
     }).then(getComments(id))
 }
 

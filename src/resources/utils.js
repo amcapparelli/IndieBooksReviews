@@ -2,17 +2,36 @@ import reviewsIcon from 'resources/img/icono-resenas.png'
 import ConnectDB from 'database/conn';
 import YouTubePlayer from 'youtube-player';
 
+const reportValidity = (form) => {
+    if (HTMLFormElement.prototype.reportValidity) {
+      form.reportValidity();
+    } else {
+      HTMLFormElement.prototype.reportValidity = () => {
+        if (form.checkValidity()) return true;
+        const btn = document.createElement('button');
+        form.appendChild(btn);
+        btn.click();
+        form.removeChild(btn);
+        return false;
+      };
+    }
+  };
 
 const checkForm = (form, inputs, id) => {
     let formData = { }
-    form.reportValidity()
+    const responseStatus = document.querySelector('.comment-status')
+    reportValidity(form)
     if (form.checkValidity()) {
         let connection = new ConnectDB()
         inputs.forEach(input => {
             formData[input.name] = input.value
         })
         formData["post_id"] = parseInt(id)
-        connection.post(formData, 'comments')
+        connection.post(formData, 'comments').then((response) => {
+            if (response === true) {
+                responseStatus.innerHTML = '¡Tu comentario se registró con éxito!'
+            }
+        })
     }
 }
 

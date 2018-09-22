@@ -5,6 +5,9 @@ class ConnectDB {
     async get (collection) {
         try {
             const conn = await fetch(this.API+collection)
+            if (!conn.ok) {
+                throw Error(conn.statusText)
+            }
             const data = await conn.json()
             return data
         } catch (error) {
@@ -14,13 +17,15 @@ class ConnectDB {
 
     async post (body, collection) {
         try {
-            await fetch(this.API+collection, {
+            const conn = await fetch(this.API+collection, {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json'
             },
         body: JSON.stringify(body)
-    })
+    }); if (!conn.ok) {
+        throw Error(conn.statusText)
+        }
         return true;
         } catch (error) {
             console.error('hubo un error', error)

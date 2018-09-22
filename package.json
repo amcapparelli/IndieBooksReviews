@@ -42,7 +42,8 @@
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
     "dotenv-webpack": "^1.5.7",
-    "query-string": "^6.1.0",
+    "query-string": "5.0.0",
+    "whatwg-fetch": "^3.0.0",
     "youtube-player": "^5.5.0"
   }
 }
