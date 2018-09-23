@@ -52,7 +52,7 @@ const readMoreLink = (id, textNode, parentElement) => {
     let leeMas = document.createElement('p')
     leeMas.id = 'readmore-link'
     leeMas.innerHTML = `<a href="./review?id=${id}" > Leer artículo completo --> </a> <br>
-                        <a href="./review?id=${id}#comment-area" > Leer comentarios --> </a>`
+    <a href="./review?id=${id}#comment-area" > Leer comentarios <i class="far fa-comment"></i> </a>`
     let extracto = document.createElement('span')
     extracto.innerHTML = textNode
     parentElement.appendChild(leeMas, extracto)
