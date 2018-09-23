@@ -7,12 +7,16 @@ body p {
 }
 
 .header-container {
+    display: -ms-grid;
     display: grid;
     background-color: $main-color;
-    grid-template-columns: 0.3fr 0.5fr 1fr;
+    -ms-grid-columns: 0.3fr 0.5fr 1fr;
+        grid-template-columns: 0.3fr 0.5fr 1fr;
     @include for-mobile {
+        display: -ms-grid;
         display: grid;
-        grid-template-columns: 0.5fr 3fr 1fr;
+        -ms-grid-columns: 0.5fr 3fr 1fr;
+            grid-template-columns: 0.5fr 3fr 1fr;
     }
     
     h1{
@@ -59,7 +63,9 @@ body p {
 .wrapper-nav {
   
     @include for-tablet-portrait {
+        display: -ms-grid;
         display: grid;
+        -ms-grid-columns: 1fr 1fr 1fr 0.2fr;
         grid-template-columns: 1fr 1fr 1fr 0.2fr;
     }
 
@@ -67,10 +73,14 @@ body p {
         display: none;
     }
 
+    display: -ms-grid;
     display: grid;
-    grid-template-columns: auto auto auto 0.5fr;
+    -ms-grid-columns: auto auto auto 0.5fr;
+        grid-template-columns: auto auto auto 0.5fr;
     padding-top: 5%;
-    align-items: end;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: end;
     grid-gap: 20px;
     float: right;
 
@@ -84,7 +94,6 @@ body p {
     label {
         font-family: $font-titles;
         color: $white;
-        
     }   
 }
 
@@ -93,12 +102,15 @@ body p {
 }
 
 .wrapper-nav-mobile {
-   
     top:0;
+    display: -ms-grid;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    -ms-grid-rows: auto 1fr auto;
+        grid-template-rows: auto 1fr auto;
     background-color: $platinum-gray;
-    align-items: end;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: end;
 
     .login-container, .search-container, .list-container {
         padding-left: 20%;
@@ -108,19 +120,25 @@ body p {
 
 .articles-list {
     @include for-tablet-portrait {
+        display: -ms-grid;
         display: grid;
+        -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
     }
     @include for-mobile {
+        display: -ms-grid;
         display: grid;
-        grid-template-columns: 1fr;
+        -ms-grid-columns: 1fr;
+            grid-template-columns: 1fr;
     } 
 
     margin-top: 5%;
     max-width: 60%;
     margin-left: 20%;
+    display: -ms-grid;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
     grid-gap: 3rem;
 
     .review-extract {
