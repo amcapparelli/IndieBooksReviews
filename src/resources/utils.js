@@ -1,4 +1,6 @@
-import reviewsIcon from 'resources/img/icono-resenas.png'
+import reviewsIcon from 'resources/img/icono-resenas.png';
+import reviewsIconxs from 'resources/img/icono-resenas-xs.png';
+import reviewsIcons from 'resources/img/icono-resenas-s.png';
 import ConnectDB from 'database/conn';
 import YouTubePlayer from 'youtube-player';
 
@@ -37,7 +39,13 @@ const checkForm = (form, inputs, id) => {
 
 export const printLogo = () => {
     const headerLogo = document.querySelector('.logo-container')
-    headerLogo.innerHTML = `<img src="${reviewsIcon}" alt="logo reseñas literarias"> `
+    headerLogo.innerHTML = 
+    `<picture>
+        <source media="(min-width: 1200px)" srcset="${reviewsIcon}">
+        <source media="(min-width: 650px)" srcset="${reviewsIcons}">
+        <source media="(min-width: 320px)" srcset="${reviewsIconxs}">
+        <img src="${reviewsIcon}" alt="logo reseñas literarias" >
+    </picture>`
     return headerLogo
 }
 
