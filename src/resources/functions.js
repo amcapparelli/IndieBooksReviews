@@ -129,7 +129,7 @@ export function calculateDate(dateReviewPublished) {
     const currentTime = date.getTime()
     const datePublished = new Date (dateReviewPublished)
     const datePublishedDD = datePublished.getDate() 
-    const datePublishedMM = datePublished.getMonth() 
+    const datePublishedMM = (datePublished.getMonth()+1) 
     const datePublishedYY = datePublished.getFullYear() 
     const diff = (currentTime - datePublished)
     const diffMins = Math.round(diff/60000)
