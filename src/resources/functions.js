@@ -2,6 +2,40 @@ import ConnectDB from 'database/conn';
 import  avatar  from 'resources/img/avatar.png';
 import { YoutubePlayerFunc } from 'resources/utils';
 
+
+//show comments from DB
+const showComments = (comments) => {
+    let commentsAreaContanier = document.querySelector('.comment-area')
+    if (comments.length !== 0) {
+    comments.forEach(comment  => {
+        let commentContainer = document.createElement('div')
+        commentContainer.classList.add('comment-container')
+        commentsAreaContanier.appendChild(commentContainer)
+        let name = document.createElement('span')
+        let message = document.createElement('p')
+        name.innerHTML = comment.name+' comentó: '
+        message.innerHTML = comment.message
+        commentContainer.appendChild(message, name)
+        commentContainer.insertBefore( name, message)
+    })
+    } else {
+        commentsAreaContanier.innerHTML = `<p>Aún no hay comentarios. Sé el primero en comentar </p> `
+    }   
+}
+
+//Connect to DB and get comments
+export const getComments = (id) => {
+    try {
+        let connection = new ConnectDB()
+        connection.get('comments').then(data => {
+        let comments = data.filter(comment => comment.post_id == id)
+        showComments(comments)
+    }) 
+    } catch (error) {
+        console.log('Hubo un error al cargar los comentarios', error)
+    }   
+}
+
 //Select avatar from DB or default avatar
 const selectAvatar = (textNode, parentElement) => {
     if (textNode !== '') {
@@ -101,39 +135,6 @@ export function calculateDate(dateReviewPublished) {
     const diffMins = Math.round(diff/60000)
     const diffHours = Math.round(diff/3600000)
     return calculateDiffDate(diffMins, diffHours, datePublishedDD, datePublishedMM, datePublishedYY)
-}
-
-//show comments from DB
-const showComments = (comments) => {
-    let commentsAreaContanier = document.querySelector('.comment-area')
-    if (comments.length !== 0) {
-    comments.forEach(comment  => {
-        let commentContainer = document.createElement('div')
-        commentContainer.classList.add('comment-container')
-        commentsAreaContanier.appendChild(commentContainer)
-        let name = document.createElement('span')
-        let message = document.createElement('p')
-        name.innerHTML = comment.name+' comentó: '
-        message.innerHTML = comment.message
-        commentContainer.appendChild(message, name)
-        commentContainer.insertBefore( name, message)
-    })
-    } else {
-        commentsAreaContanier.innerHTML = ` <p>Aún no hay comentarios. Sé el primero en comentar </p> `
-    }   
-}
-
-//Connect to DB and get comments
-export const getComments = (id) => {
-    try {
-        let connection = new ConnectDB()
-        connection.get('comments').then(data => {
-        let comments = data.filter(comment => comment.post_id == id)
-        showComments(comments)
-    }) 
-    } catch (error) {
-        console.log('Hubo un error al cargar los comentarios', error)
-    }   
 }
 
 export default {
